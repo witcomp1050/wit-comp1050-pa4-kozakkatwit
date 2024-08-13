@@ -20,7 +20,24 @@ public class PA4a {
 	 * @param args command-line arguments: <encrypted string> <substring>
 	 */
 	public static void main(String[] args) {
-		// replace with your code
+		 if (args.length != 2) {
+	            System.out.println(ERR_USAGE);
+	        }
+int result [] = new int[26];
+Shifter obj = new Shifter(args[0]);
+result = obj.findShift(args[1]);
+if(result[0] == -1) {
+	System.out.println(ERR_NONE);
+	            }
+for(int i = 0; i<26; i++) {
+	if(result[i]==1) {
+	break;
+	        }
+System.out.println(result[i]);
+	    }
+	
 	}
-
 }
+
+
+

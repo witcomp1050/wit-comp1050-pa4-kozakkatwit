@@ -2,7 +2,8 @@ package edu.wit.cs.comp1050;
 
 //TODO: document this class
 public class Point2D {
-	
+	private double x;
+	private double y;
 	/**
 	 * Constructor to initialize coordinates
 	 * 
@@ -10,7 +11,8 @@ public class Point2D {
 	 * @param y y value
 	 */
 	public Point2D(double x, double y) {
-		// replace with your code
+		this.x = x;
+		this.y = y;
 	}
 	
 	/**
@@ -19,7 +21,7 @@ public class Point2D {
 	 * @return x coordinate
 	 */
 	public double getX() {
-		return 0; // replace with your code
+		return x; // replace with your code
 	}
 	
 	/**
@@ -28,7 +30,7 @@ public class Point2D {
 	 * @return y coordinate
 	 */
 	public double getY() {
-		return 0; // replace with your code
+		return y; // replace with your code
 	}
 	
 	/**
@@ -41,7 +43,7 @@ public class Point2D {
 	 */
 	@Override
 	public String toString() {
-		return ""; // replace with your code
+		return String.format("(%.3f, %.3f)",x,y); // replace with your code
 	}
 	
 	/**
@@ -56,8 +58,14 @@ public class Point2D {
 	 */
 	@Override
 	public boolean equals(Object o) {
-		return false; // replace with your code
-	}
+		if (o instanceof Point2D) {
+			final Point2D p = (Point2D) o;
+			return Shape2D.closeEnough(0., distanceTo(p));
+		} else {
+			return false;
+		}
+    }
+	
 	
 	/**
 	 * Method to compute the Euclidean/L2
@@ -69,7 +77,10 @@ public class Point2D {
 	 * @return straightline distance between p1 and p2
 	 */
 	public static double distance(Point2D p1, Point2D p2) {
-		return 0; // replace with your code
+		final double xDiff = (p1.x - p2.x);
+		final double yDiff = (p1.y - p2.y);
+		
+		return Math.sqrt(xDiff*xDiff + yDiff*yDiff);
 	}
 	
 	/**
@@ -81,7 +92,7 @@ public class Point2D {
 	 * @return straightline distance between this point and p
 	 */
 	public double distanceTo(Point2D p) {
-		return 0; // MUST call distance above with this point
+		return distance(this,p); // MUST call distance above with this point
 	}
 
 }
